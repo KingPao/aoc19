@@ -1,40 +1,35 @@
-
 class Secure_Container(object):
 
-   
+    MIN = 138307
+    MAX = 654504
 
-    def calc_numbers(self,val1,val2,max_iteraton):
-
-        i = val1
-
+    def calc_numbers(self):
         count = 0
 
-       
+        for i in range(self.MIN, self.MAX):
+            number_sequence = [int(j) for j in str(i)]
 
-        for i in range(0,max_iteraton):
-
-            if i == val2:
-
+            if self.check_ascending(number_sequence) and self.check_matching_adjacent(number_sequence):
                 count += 1
-
- 
 
         print(count)
 
-   
+    def check_ascending(self, number_sequence):
+        for i in range(0, len(number_sequence)-1):
+            if number_sequence[i] > number_sequence[i+1]:
+                return False
 
- 
+        return True
 
-min = 138307
+    def check_matching_adjacent(self, number_sequence):
+        for i in range(0, len(number_sequence)-1):
+            res = number_sequence.count(number_sequence[i])
+            if res == 2:
+                return True
+                
+        return False
 
-max = 654504
-
-min_data = [int(j) for j in str(min)]
-
-max_data = [int(j) for j in str(max)]
-
- 
 
 secure_container = Secure_Container()
+secure_container.calc_numbers()
 
-secure_container.calc_numbers(1,3,6)
