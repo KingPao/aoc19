@@ -17,15 +17,16 @@ class Orbital_Map(object):
     def dummy(self):
         com = "tba"
         for orbit_relation in data_input:
-            orbits = orbic_relation.split(")")
+            orbits = orbit_relation.split(")")
+
+
+            predecessor = orbits[0]
+            successor   = orbits[1]
 
             while True:
-                if find_com:
+                if self.find_com(predecessor):
                     starting_point = predecessor
                     break
-
-            predecessor = orbtis[0]
-            successor   = orbits[1]
 
     def find_com(self, predecessor):
 
